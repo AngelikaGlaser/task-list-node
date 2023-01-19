@@ -100,5 +100,11 @@ app.post('/add-task', (req, res) => {
         }
     })
 })
+app.get('/clearAll/', (req, res) => {
+    fs.writeFile('./tasks.json', JSON.stringify([]), (err)=>{
+        if(err != null) console.log('Error', err)
+    })
+    res.redirect('/')
+})
 
 app.listen(3002)
